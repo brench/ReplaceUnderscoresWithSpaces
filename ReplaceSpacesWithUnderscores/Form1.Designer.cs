@@ -29,22 +29,46 @@
         private void InitializeComponent()
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSeparator = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(154, 64);
+            this.textBox1.Location = new System.Drawing.Point(77, 33);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(583, 31);
+            this.textBox1.Size = new System.Drawing.Size(294, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // txtSeparator
+            // 
+            this.txtSeparator.Location = new System.Drawing.Point(495, 35);
+            this.txtSeparator.Name = "txtSeparator";
+            this.txtSeparator.Size = new System.Drawing.Size(100, 20);
+            this.txtSeparator.TabIndex = 1;
+            this.txtSeparator.Text = "-";
+            this.txtSeparator.TextChanged += new System.EventHandler(this.txtSeparator_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(436, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Separator";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1390, 1093);
+            this.ClientSize = new System.Drawing.Size(695, 489);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtSeparator);
             this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,6 +79,8 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSeparator;
+        private System.Windows.Forms.Label label1;
     }
 }
 

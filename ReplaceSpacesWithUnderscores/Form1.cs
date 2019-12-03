@@ -18,6 +18,7 @@ namespace ReplaceSpacesWithUnderscores
         // See http://msdn.microsoft.com/en-us/library/ms649021%28v=vs.85%29.aspx
         public const int WM_CLIPBOARDUPDATE = 0x031D;
         public static IntPtr HWND_MESSAGE = new IntPtr(-3);
+        private string _separator = "-";
 
         // See http://msdn.microsoft.com/en-us/library/ms632599%28VS.85%29.aspx#message_only
         [DllImport("user32.dll", SetLastError = true)]
@@ -78,13 +79,13 @@ namespace ReplaceSpacesWithUnderscores
                         _userStoryString = text.Replace("User Story", string.Empty).Trim();
                         _userStoryString = _userStoryString.Insert(0, "feature/");
                         _userStoryString = _userStoryString.Replace(":", string.Empty);
-                        _userStoryString = _userStoryString.Replace(" ", "_");
+                        _userStoryString = _userStoryString.Replace(" ",  _separator);
                     }
                     else if (_userStoryString != null) // Task
                     {
                         _taskString = text.Replace("Task", string.Empty).Trim();
                         _taskString = _taskString.Replace(":", string.Empty);
-                        _taskString = _taskString.Replace(" ", "_");
+                        _taskString = _taskString.Replace(" ", _separator);
                         var stringForClipboard = $"{_userStoryString}.{_taskString}";
                         _userStoryString = null;
                         _taskString = null;
@@ -130,7 +131,7 @@ namespace ReplaceSpacesWithUnderscores
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            var text = textBox1.Text;
+            var text = textBox1.Text.ToLower();
 
             if (Clipboard.GetText().Contains("feature/"))
             {
@@ -148,10 +149,15 @@ namespace ReplaceSpacesWithUnderscores
             }
 
             text = text.Replace(":", string.Empty);
-            text = text.Replace(" ", "_");
+            text = text.Replace(" ", _separator);
 
             Clipboard.SetText(text.Trim());
             textBox1.SelectAll();
+        }
+
+        private void txtSeparator_TextChanged(object sender, EventArgs e)
+        {
+            _separator = txtSeparator.Text;
         }
     }
 
